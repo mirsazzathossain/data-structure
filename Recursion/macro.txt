@@ -1,0 +1,7 @@
+#define debug(...) fprintf(stderr, __VA_ARGS__), fflush(stderr)
+#define time__(d) \
+    for ( \
+        auto blockTime = make_pair(chrono::high_resolution_clock::now(), true); \
+        blockTime.second; \
+        debug("%s executes in: %ld ms\n", d, chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - blockTime.first).count()), blockTime.second = false \
+    )
